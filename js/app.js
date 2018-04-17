@@ -8,23 +8,28 @@ var product3Button = document.getElementById('product-3-button');
 
 
 function Product(url) {
-  
+  this.url = url;
+  this.votes = 0;
 };
 
 
-var allProducts = [];
+var allProducts = [
+  new Product('img/dog-duck.jpg'),
+  new Product('img/breakfast.jpg'),
+  new Product('img/sweep.jpg'),
+];
 
-var product1Votes = 0;
-var product2Votes = 0;
-var product3Votes = 0;
+var product1 = allProducts[0];
+var product2 = allProducts[1];
+var product3 = allProducts[2];
 
 
 product1Button.addEventListener('click', function(e) {
-  product1Votes++;
+  product1.votes++;
 });
 product2Button.addEventListener('click', function(e) {
-  product2Votes++;
+  product2.votes++;
 });
 product3Button.addEventListener('click', function(e) {
-  product3Votes++;
+  product3.votes++;
 });
