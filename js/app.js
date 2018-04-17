@@ -13,13 +13,13 @@ var product3Image = document.getElementById('product-3-image');
 function Product(url) {
   this.url = url;
   this.votes = 0;
-};
+}
 
 
 var allProducts = [
   new Product('images/dog-duck.jpg'),
   new Product('images/breakfast.jpg'),
-  new Product('images/sweep.jpg'),
+  new Product('images/sweep.png'),
   new Product('images/bag.jpg'),
   new Product('images/banana.jpg'),
   new Product('images/bathroom.jpg'),
@@ -46,16 +46,24 @@ var product3 = allProducts[2];
 
 product1Button.addEventListener('click', function(e) {
   product1.votes++;
-  product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
-  product1Image.src = product1.url;
+  pickNewProducts();
 });
 product2Button.addEventListener('click', function(e) {
   product2.votes++;
-  product2 = allProducts[Math.floor(Math.random() * allProducts.length)];
-  product2Image.src = product2.url;
+  pickNewProducts();
 });
 product3Button.addEventListener('click', function(e) {
   product3.votes++;
+  pickNewProducts();
+});
+
+function pickNewProducts() {
+  product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
+  product1Image.src = product1.url;
+  product2 = allProducts[Math.floor(Math.random() * allProducts.length)];
+  product2Image.src = product2.url;
   product3 = allProducts[Math.floor(Math.random() * allProducts.length)];
   product3Image.src = product3.url;
-});
+}
+
+
