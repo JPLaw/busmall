@@ -10,15 +10,16 @@ var product1Image = document.getElementById('product-1-image');
 var product2Image = document.getElementById('product-2-image');
 var product3Image = document.getElementById('product-3-image');
 
-function Product(url) {
+function Product(url, name) {
   this.url = url;
+  this.name = name;
   this.votes = 0;
 }
 
 
 var allProducts = [
-  new Product('images/dog-duck.jpg', 'dog-duck'),
-  new Product('images/breakfast.jpg', 'breakfast'),
+  new Product('images/dog-duck.jpg', 'Dog duck'),
+  new Product('images/breakfast.jpg', 'Breakfast'),
   new Product('images/sweep.png', 'Baby Sweeper'),
   new Product('images/bag.jpg', 'R2D2 Bag'),
   new Product('images/banana.jpg', 'Banana Slicer'),
@@ -110,3 +111,17 @@ var checkVoteCount = function() {
   }
 };
 
+var ulElement = document.getElementById('vote-list');
+
+function createList() {
+  for(var i=0; i < allProducts.length; i++) {
+    //creates ul element
+    var liElement = document.createElement('li');
+    //give element content
+    liElement.textContent =  allProducts[i].name + ' ' + allProducts[i].votes;
+    //append li child to the ul parent element
+    ulElement.appendChild(liElement);
+
+  }
+}
+createList();

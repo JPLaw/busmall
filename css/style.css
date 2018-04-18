@@ -8,6 +8,6 @@ h1 {
 }
 
 img {
-  display: inline-block;
-  width: 150px;
+  width: 10em;
+  height: 10em;
 }
