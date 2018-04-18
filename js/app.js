@@ -85,32 +85,27 @@ pickNewProducts();
 
 
 var checkVoteCount = function() {
-  while(voteCounter >= 5) {
+  if(voteCounter >= 5) {
     // console.log('test');
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
     product3Button.removeEventListener('click', handleButton3Vote);
-  } for(var i = 0; i < allProducts.length; i++) {
-    //creates ul element
-    var liElement = document.createElement('li');
-    //give element content
-    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
-    //append li child to the ul parent element
-    ulElement.appendChild(liElement);
-  }
+    createList();
+  } 
 };
 
 var ulElement = document.getElementById('vote-list');
 
-// function createList() {
-//   for(var i=0; i < allProducts.length; i++) {
-//     //creates ul element
-//     var liElement = document.createElement('li');
-//     //give element content
-//     liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
-//     //append li child to the ul parent element
-//     ulElement.appendChild(liElement);
-//   }
-// }
+function createList() {
+  for(var i=0; i < allProducts.length; i++) {
+    //creates ul element
+    var liElement = document.createElement('li');
+    //give element content
+    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
+    console.log(liElement.textContent);
+    //append li child to the ul parent element
+    ulElement.appendChild(liElement);
+  }
+}
 
-createList();
+
