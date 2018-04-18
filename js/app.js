@@ -70,25 +70,7 @@ var handleButton3Vote = function(e) {
 product1Button.addEventListener('click', handleButton1Vote);
 product2Button.addEventListener('click', handleButton2Vote);
 product3Button.addEventListener('click', handleButton3Vote);
-// {
-//   product2.votes++;
-//   voteCounter++;
-//   checkVoteCount();
-//   pickNewProducts();
-// });
 
-// var handleButton3Vote = function(e) {
-//   product3.votes++;
-//   voteCounter++;
-//   checkVoteCount();
-//   pickNewProducts();
-// }
-// product3Button.addEventListener('click', function(e) {
-//   product3.votes++;
-//   voteCounter++;
-//   checkVoteCount();
-//   pickNewProducts();
-// });
 
 function pickNewProducts() {
   product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
@@ -103,25 +85,32 @@ pickNewProducts();
 
 
 var checkVoteCount = function() {
-  if(voteCounter >= 5) {
+  while(voteCounter >= 5) {
     // console.log('test');
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
     product3Button.removeEventListener('click', handleButton3Vote);
+  } for(var i = 0; i < allProducts.length; i++) {
+    //creates ul element
+    var liElement = document.createElement('li');
+    //give element content
+    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
+    //append li child to the ul parent element
+    ulElement.appendChild(liElement);
   }
 };
 
 var ulElement = document.getElementById('vote-list');
 
-function createList() {
-  for(var i=0; i < allProducts.length; i++) {
-    //creates ul element
-    var liElement = document.createElement('li');
-    //give element content
-    liElement.textContent =  allProducts[i].name + ' ' + allProducts[i].votes;
-    //append li child to the ul parent element
-    ulElement.appendChild(liElement);
+// function createList() {
+//   for(var i=0; i < allProducts.length; i++) {
+//     //creates ul element
+//     var liElement = document.createElement('li');
+//     //give element content
+//     liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
+//     //append li child to the ul parent element
+//     ulElement.appendChild(liElement);
+//   }
+// }
 
-  }
-}
 createList();
