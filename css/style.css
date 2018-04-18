@@ -1,8 +1,14 @@
-body {
+/* body {
   
-}
+} */
 
 h1 {
   font-family: 'Black Han Sans', sans-serif;
   text-align: center;
 }
+
+img {
+  display: inline-block;
+  width: 50%;
+}
+/* images in figures? <figure>

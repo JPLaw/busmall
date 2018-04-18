@@ -43,19 +43,51 @@ var product1 = allProducts[0];
 var product2 = allProducts[1];
 var product3 = allProducts[2];
 
+var voteCounter = 0;
 
-product1Button.addEventListener('click', function(e) {
+var handleButton1Vote = function(e) {
   product1.votes++;
+  voteCounter++;
+  checkVoteCount();
   pickNewProducts();
-});
-product2Button.addEventListener('click', function(e) {
+};
+
+var handleButton2Vote = function(e) {
   product2.votes++;
+  voteCounter++;
+  checkVoteCount();
   pickNewProducts();
-});
-product3Button.addEventListener('click', function(e) {
+};
+
+var handleButton3Vote = function(e) {
   product3.votes++;
+  voteCounter++;
+  checkVoteCount();
   pickNewProducts();
-});
+};
+
+product1Button.addEventListener('click', handleButton1Vote);
+product2Button.addEventListener('click', handleButton2Vote);
+product3Button.addEventListener('click', handleButton3Vote);
+// {
+//   product2.votes++;
+//   voteCounter++;
+//   checkVoteCount();
+//   pickNewProducts();
+// });
+
+// var handleButton3Vote = function(e) {
+//   product3.votes++;
+//   voteCounter++;
+//   checkVoteCount();
+//   pickNewProducts();
+// }
+// product3Button.addEventListener('click', function(e) {
+//   product3.votes++;
+//   voteCounter++;
+//   checkVoteCount();
+//   pickNewProducts();
+// });
 
 function pickNewProducts() {
   product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
@@ -66,4 +98,13 @@ function pickNewProducts() {
   product3Image.src = product3.url;
 }
 
+pickNewProducts();
+
+
+var checkVoteCount = function() {
+  if(voteCounter >= 5) {
+    // console.log('test');
+    product1Button.removeEventListener('click', handleButton1Vote, handleButton2Vote, handleButton3Vote);
+  }
+};
 
