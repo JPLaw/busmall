@@ -1,6 +1,6 @@
-/* body {
+body {
   
-} */
+}
 
 h1 {
   font-family: 'Black Han Sans', sans-serif;
@@ -9,6 +9,5 @@ h1 {
 
 img {
   display: inline-block;
-  width: 50%;
+  width: 150px;
 }
-/* images in figures? <figure>
