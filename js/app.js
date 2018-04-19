@@ -70,25 +70,7 @@ var handleButton3Vote = function(e) {
 product1Button.addEventListener('click', handleButton1Vote);
 product2Button.addEventListener('click', handleButton2Vote);
 product3Button.addEventListener('click', handleButton3Vote);
-// {
-//   product2.votes++;
-//   voteCounter++;
-//   checkVoteCount();
-//   pickNewProducts();
-// });
 
-// var handleButton3Vote = function(e) {
-//   product3.votes++;
-//   voteCounter++;
-//   checkVoteCount();
-//   pickNewProducts();
-// }
-// product3Button.addEventListener('click', function(e) {
-//   product3.votes++;
-//   voteCounter++;
-//   checkVoteCount();
-//   pickNewProducts();
-// });
 
 function pickNewProducts() {
   product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
@@ -108,7 +90,8 @@ var checkVoteCount = function() {
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
     product3Button.removeEventListener('click', handleButton3Vote);
-  }
+    createList();
+  } 
 };
 
 var ulElement = document.getElementById('vote-list');
@@ -118,10 +101,11 @@ function createList() {
     //creates ul element
     var liElement = document.createElement('li');
     //give element content
-    liElement.textContent =  allProducts[i].name + ' ' + allProducts[i].votes;
+    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
+    console.log(liElement.textContent);
     //append li child to the ul parent element
     ulElement.appendChild(liElement);
-
   }
 }
-createList();
+
+
