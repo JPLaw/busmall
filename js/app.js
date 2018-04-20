@@ -16,9 +16,6 @@ function Product(url, name) {
   this.votes = 0;
 }
 
-Product.lastShown = [0];
-Product.currentlyShown = [0];
-
 var allProducts = [
   new Product('images/dog-duck.jpg', 'Dog duck'),
   new Product('images/breakfast.jpg', 'Breakfast'),
@@ -115,3 +112,35 @@ function createList() {
   }
 }
 
+// use Chart.js to create a bar chart
+Product.renderChart = function() {
+  var ctx = document.getElementById('vote-chart');
+
+  new Chart(ctx, {
+    type: 'donut',
+    data: {
+      labels: Product.productVotes,
+      datasets: [{
+        label: 'Votes Per Product',
+        data: Product.productVotes,
+        backgroundColor: Product.arrayOfColors,
+        hoverBackgroundColor: 'blue'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      },
+      title: {
+        display: true,
+        text: 'Results'
+      }
+    }
+  });
+};
+
+var ctx = document.getElementById("myChart");
