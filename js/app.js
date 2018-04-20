@@ -16,6 +16,8 @@ function Product(url, name) {
   this.votes = 0;
 }
 
+Product.lastShown = [0];
+Product.currentlyShown = [0];
 
 var allProducts = [
   new Product('images/dog-duck.jpg', 'Dog duck'),
@@ -71,14 +73,16 @@ product1Button.addEventListener('click', handleButton1Vote);
 product2Button.addEventListener('click', handleButton2Vote);
 product3Button.addEventListener('click', handleButton3Vote);
 
-
+var randomImage = [];
 function pickNewProducts() {
-  product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
+  while(product1 === product2 || product1 === product3 || product2 === product3 || randomImage[] === product1 || randomImage[] === product2 || randomImage[] === product3)
+    product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
   product1Image.src = product1.url;
   product2 = allProducts[Math.floor(Math.random() * allProducts.length)];
   product2Image.src = product2.url;
   product3 = allProducts[Math.floor(Math.random() * allProducts.length)];
   product3Image.src = product3.url;
+  randomImage.push(this);
 }
 
 pickNewProducts();
@@ -91,7 +95,7 @@ var checkVoteCount = function() {
     product2Button.removeEventListener('click', handleButton2Vote);
     product3Button.removeEventListener('click', handleButton3Vote);
     createList();
-  } 
+  }
 };
 
 var ulElement = document.getElementById('vote-list');
@@ -107,5 +111,4 @@ function createList() {
     ulElement.appendChild(liElement);
   }
 }
-
 
