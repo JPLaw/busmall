@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('Java file is linked');
+console.log('JavaScript file is linked');
 
 var product1Button = document.getElementById('product-1-button');
 var product2Button = document.getElementById('product-2-button');
@@ -73,17 +73,20 @@ product1Button.addEventListener('click', handleButton1Vote);
 product2Button.addEventListener('click', handleButton2Vote);
 product3Button.addEventListener('click', handleButton3Vote);
 
-var randomImage = [];
+var previousArray = [];
 function pickNewProducts() {
-  while(product1 === product2 || product1 === product3 || product2 === product3 || randomImage[] === product1 || randomImage[] === product2 || randomImage[] === product3)
+  while(product1 === product2 || product1 === product3 || product2 === product3 || previousArray.includes(product1) || previousArray.includes(product2) || previousArray.includes(product3)) {
     product1 = allProducts[Math.floor(Math.random() * allProducts.length)];
+    product2 = allProducts[Math.floor(Math.random() * allProducts.length)];
+    product3 = allProducts[Math.floor(Math.random() * allProducts.length)];
+  }
   product1Image.src = product1.url;
-  product2 = allProducts[Math.floor(Math.random() * allProducts.length)];
   product2Image.src = product2.url;
-  product3 = allProducts[Math.floor(Math.random() * allProducts.length)];
   product3Image.src = product3.url;
-  randomImage.push(this);
+  previousArray = [product1, product2, product3];
 }
+
+
 
 pickNewProducts();
 
