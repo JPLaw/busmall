@@ -10,10 +10,14 @@ var product1Image = document.getElementById('product-1-image');
 var product2Image = document.getElementById('product-2-image');
 var product3Image = document.getElementById('product-3-image');
 
+Product.productNames = [];
+Product.productVotes = [];
+
 function Product(url, name) {
   this.url = url;
   this.name = name;
   this.votes = 0;
+  Product.productVotes.push(this.votes);
 }
 
 var allProducts = [
@@ -89,12 +93,13 @@ pickNewProducts();
 
 
 var checkVoteCount = function() {
-  if(voteCounter >= 5) {
+  if(voteCounter >= 25) {
     // console.log('test');
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
     product3Button.removeEventListener('click', handleButton3Vote);
     createList();
+    Product.renderChart();
   }
 };
 
@@ -105,7 +110,9 @@ function createList() {
     //creates ul element
     var liElement = document.createElement('li');
     //give element content
-    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
+    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes; 
+    Product.productVotes[i] = allProducts[i].votes;
+    Product.productNames[i] = allProducts[i].name;
     console.log(liElement.textContent);
     //append li child to the ul parent element
     ulElement.appendChild(liElement);
@@ -114,18 +121,48 @@ function createList() {
 
 // use Chart.js to create a bar chart
 Product.renderChart = function() {
-  var ctx = document.getElementById('vote-chart');
-
+  var ctx = document.getElementById('myChart');
+console.log(Product.productNames);
   new Chart(ctx, {
-    type: 'donut',
+    type: 'bar',
     data: {
-      labels: Product.productVotes,
+      labels: Product.productNames,
       datasets: [{
         label: 'Votes Per Product',
         data: Product.productVotes,
-        backgroundColor: Product.arrayOfColors,
-        hoverBackgroundColor: 'blue'
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
       }]
+
     },
     options: {
       scales: {
@@ -143,4 +180,3 @@ Product.renderChart = function() {
   });
 };
 
-var ctx = document.getElementById("myChart");
