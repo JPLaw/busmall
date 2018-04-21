@@ -180,3 +180,9 @@ console.log(Product.productNames);
   });
 };
 
+//store results in local storage
+Product.stringifiedProduct = JSON.stringify(Product.allProduct);
+localStorage.setItem('results', Product.stringifiedProduct);
+
+//check local storage for results
+Product.parsedProduct = JSON.parse(localStorage.getItem('results'));
