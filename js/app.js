@@ -93,7 +93,7 @@ pickNewProducts();
 
 
 var checkVoteCount = function() {
-  if(voteCounter >= 25) {
+  if(voteCounter >= 5) {
     // console.log('test');
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
