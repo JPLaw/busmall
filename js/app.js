@@ -93,7 +93,7 @@ pickNewProducts();
 
 
 var checkVoteCount = function() {
-  if(voteCounter >= 25) {
+  if(voteCounter >= 5) {
     // console.log('test');
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
@@ -110,7 +110,7 @@ function createList() {
     //creates ul element
     var liElement = document.createElement('li');
     //give element content
-    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes; 
+    liElement.textContent = allProducts[i].name + ' ' + allProducts[i].votes;
     Product.productVotes[i] = allProducts[i].votes;
     Product.productNames[i] = allProducts[i].name;
     console.log(liElement.textContent);
@@ -122,7 +122,7 @@ function createList() {
 // use Chart.js to create a bar chart
 Product.renderChart = function() {
   var ctx = document.getElementById('myChart');
-console.log(Product.productNames);
+  console.log(Product.productNames);
   new Chart(ctx, {
     type: 'bar',
     data: {
@@ -158,17 +158,35 @@ console.log(Product.productNames);
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(255, 159, 64, 1)',
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
         ],
         borderWidth: 1
       }]
-
     },
     options: {
       scales: {
         yAxes: [{
           ticks: {
             beginAtZero: true
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            autoSkip: false
           }
         }]
       },
@@ -181,8 +199,34 @@ console.log(Product.productNames);
 };
 
 //store results in local storage
-Product.stringifiedProduct = JSON.stringify(Product.allProduct);
+Product.stringifiedProduct = JSON.stringify(Product.allProducts);
 localStorage.setItem('results', Product.stringifiedProduct);
 
 //check local storage for results
 Product.parsedProduct = JSON.parse(localStorage.getItem('results'));
+
+//array to store instances of product constructor
+//use the products from local storage, or make new product instances
+
+Product.allProducts = Product.parsedProduct || [
+  new Product('images/dog-duck.jpg', 'Dog duck'),
+  new Product('images/breakfast.jpg', 'Breakfast'),
+  new Product('images/sweep.png', 'Baby Sweeper'),
+  new Product('images/bag.jpg', 'R2D2 Bag'),
+  new Product('images/banana.jpg', 'Banana Slicer'),
+  new Product('images/bathroom.jpg', 'TP Holder'),
+  new Product('images/boots.jpg', 'Boots'),
+  new Product('images/bubblegum.jpg', 'Bubblegum'),
+  new Product('images/chair.jpg', 'Chair'),
+  new Product('images/cthulhu.jpg', 'Cthulhu'),
+  new Product('images/dragon.jpg', 'Dragon'),
+  new Product('images/pen.jpg', 'Pen'),
+  new Product('images/pet-sweep.jpg', 'Pet Sweeper'),
+  new Product('images/scissors.jpg', 'Pizza Scissors'),
+  new Product('images/shark.jpg', 'Shark Blanket'),
+  new Product('images/tauntaun.jpg', 'Tauntaun'),
+  new Product('images/unicorn.jpg', 'Unicorn'),
+  new Product('images/usb.gif', 'USB'),
+  new Product('images/water-can.jpg', 'Water Can'),
+  new Product('images/wine-glass.jpg', 'Wine Glass'),
+];
