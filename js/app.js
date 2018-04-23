@@ -13,6 +13,8 @@ var product3Image = document.getElementById('product-3-image');
 Product.productNames = [];
 Product.productVotes = [];
 
+Product.parsedProducts = JSON.parse(localStorage.getItem('results'));
+
 function Product(url, name) {
   this.url = url;
   this.name = name;
@@ -93,13 +95,16 @@ pickNewProducts();
 
 
 var checkVoteCount = function() {
-  if(voteCounter >= 5) {
+  if(voteCounter >= 25) {
     // console.log('test');
     product1Button.removeEventListener('click', handleButton1Vote);
     product2Button.removeEventListener('click', handleButton2Vote);
     product3Button.removeEventListener('click', handleButton3Vote);
+    var stringifiedProduct = JSON.stringify(allProducts);
+    localStorage.setItem('results', stringifiedProduct);
     createList();
     Product.renderChart();
+    console.log(Product.productVotes);
   }
 };
 
@@ -199,34 +204,38 @@ Product.renderChart = function() {
 };
 
 //store results in local storage
-Product.stringifiedProduct = JSON.stringify(Product.allProducts);
+Product.stringifiedProduct = JSON.stringify(allProducts);
 localStorage.setItem('results', Product.stringifiedProduct);
 
 //check local storage for results
-Product.parsedProduct = JSON.parse(localStorage.getItem('results'));
+Product.parseProduct = JSON.parse(localStorage.getItem('results'));
 
 //array to store instances of product constructor
 //use the products from local storage, or make new product instances
 
-Product.allProducts = Product.parsedProduct || [
-  new Product('images/dog-duck.jpg', 'Dog duck'),
-  new Product('images/breakfast.jpg', 'Breakfast'),
-  new Product('images/sweep.png', 'Baby Sweeper'),
-  new Product('images/bag.jpg', 'R2D2 Bag'),
-  new Product('images/banana.jpg', 'Banana Slicer'),
-  new Product('images/bathroom.jpg', 'TP Holder'),
-  new Product('images/boots.jpg', 'Boots'),
-  new Product('images/bubblegum.jpg', 'Bubblegum'),
-  new Product('images/chair.jpg', 'Chair'),
-  new Product('images/cthulhu.jpg', 'Cthulhu'),
-  new Product('images/dragon.jpg', 'Dragon'),
-  new Product('images/pen.jpg', 'Pen'),
-  new Product('images/pet-sweep.jpg', 'Pet Sweeper'),
-  new Product('images/scissors.jpg', 'Pizza Scissors'),
-  new Product('images/shark.jpg', 'Shark Blanket'),
-  new Product('images/tauntaun.jpg', 'Tauntaun'),
-  new Product('images/unicorn.jpg', 'Unicorn'),
-  new Product('images/usb.gif', 'USB'),
-  new Product('images/water-can.jpg', 'Water Can'),
-  new Product('images/wine-glass.jpg', 'Wine Glass'),
-];
+if (Product.parsedProducts === null) {
+  allProducts = [
+    new Product('images/dog-duck.jpg', 'Dog duck'),
+    new Product('images/breakfast.jpg', 'Breakfast'),
+    new Product('images/sweep.png', 'Baby Sweeper'),
+    new Product('images/bag.jpg', 'R2D2 Bag'),
+    new Product('images/banana.jpg', 'Banana Slicer'),
+    new Product('images/bathroom.jpg', 'TP Holder'),
+    new Product('images/boots.jpg', 'Boots'),
+    new Product('images/bubblegum.jpg', 'Bubblegum'),
+    new Product('images/chair.jpg', 'Chair'),
+    new Product('images/cthulhu.jpg', 'Cthulhu'),
+    new Product('images/dragon.jpg', 'Dragon'),
+    new Product('images/pen.jpg', 'Pen'),
+    new Product('images/pet-sweep.jpg', 'Pet Sweeper'),
+    new Product('images/scissors.jpg', 'Pizza Scissors'),
+    new Product('images/shark.jpg', 'Shark Blanket'),
+    new Product('images/tauntaun.jpg', 'Tauntaun'),
+    new Product('images/unicorn.jpg', 'Unicorn'),
+    new Product('images/usb.gif', 'USB'),
+    new Product('images/water-can.jpg', 'Water Can'),
+    new Product('images/wine-glass.jpg', 'Wine Glass'),
+  ];
+} else {
+  allProducts = Product.parsedProducts;
+}
