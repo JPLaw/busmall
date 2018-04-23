@@ -3,7 +3,7 @@
 <head>
   
   <title>Bus Mall</title>
-  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,46 +11,25 @@
   <body>
     <h1>Welcome to Bus Mall</h1>
     <h2>Please vote for your favorite products!</h2>
-      
     
-    <!-- <div class="imgContainer">
-              <div>
-                  <img src="images/dog-duck.jpg" width="100px" height="100px"/>
-              </div>
-              <div class="imgButton">
-                  <button value="product-1-button">Vote</button>
-              </div>
-       </div>
-    
-    <div class="imgContainer">
-              <div>
-                  <img src="images/breakfast.jpg" width="100px" height="100px"/>
-              </div>
-              <div class="imgButton">
-                  <button value="product-2-button">Vote</button>
-              </div>
-       </div>
-       <div class="imgContainer">
-        <div>
-            <img src="images/sweep.png" width="100px" height="100px"/>
-        </div>
-        <div class="imgButton">
-            <button value="product-3-button">Vote</button>
-        </div>
- </div> -->
-         
-    
-    
-    <img id="product-1-image" src="images/dog-duck.jpg">
-      <img id="product-2-image" src="images/breakfast.jpg">
-      <img id="product-3-image" src="images/sweep.png">
+  </section>
+  <section id="voting-section">
     <div>
+      <img id="product-1-image" src=" " alt="">
       <button id="product-1-button">Vote</button>
+    </div>
+    <div>
+      <img id="product-2-image" src=" " alt="">
       <button id="product-2-button">Vote</button>
+    </div>
+    <div>
+      <img id="product-3-image" src=" " alt="">
       <button id="product-3-button">Vote</button>
     </div>
+    </section>
+    <h2 id="results-heading">View Your Results</h2>
   <ul id="vote-list"></ul>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChart" width="0" height="0"></canvas>
   
 </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>

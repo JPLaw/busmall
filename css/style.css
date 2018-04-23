@@ -6,7 +6,7 @@ body {
    h1 {
      font-family: 'Black Han Sans', sans-serif;
      text-align: center;
-    font-size: 2.5em;
+     font-size: 2.5em;
    }
    
   h2 {
@@ -14,48 +14,65 @@ body {
     text-align: center;
     font-size: 1.4em;
   }
+
+  #voting-section {
+    display: flex;
+    width: 40em;
+    margin: auto;
+  }
   
-  img {
+  
+  /* img {
     padding: 15px;
     width: 12em;
     height: 12em;
-    margin-right: 5em
-  }
+    margin-right: 5em;
+  } */
 
-  .imgButton{
-    text-align:center;
+  img {
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12em;
+    height: 12em;
+    border-radius: 1.5em
 }
-  
-  
+
   button {
     color: rgb(255, 255, 255);
     background: rgb(40, 141, 235);
     font-family: 'Black Han Sans';
     font-size: .8em;
     font-weight: 400;
-    border: none;
     display: inline-block;
+    margin-left: auto;
     margin: 1em auto 2em;
     padding: 1em 1.5em;
-    box-shadow: inset 0em 0em .25em rgba(0, 0, 0, 0.486);
     padding: 15px;
-    margin-right: 8em
+    margin-left: 6em
    }
    
   button:hover {
     background: rgb(65, 53, 236);
   }
   
-  #ul.vote-list {
+  ul {
     columns: 3;
     color: rgb(255, 255, 255);
-    font-family: 'Black Han Sans';
+    font-family: 'Quicksand', sans-serif;
     width: 85%;
     margin: 0 auto;
     padding-top: 1em;
     padding-bottom: 2em;
     padding-left: 1.75em;
     padding-right: 0;
+    list-style-type: none;
   }
+  
+  ul li {
+    padding: .25em;
+    margin-left: 5em
+  }
+  
 
 

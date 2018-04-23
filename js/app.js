@@ -203,12 +203,6 @@ Product.renderChart = function() {
   });
 };
 
-//store results in local storage
-Product.stringifiedProduct = JSON.stringify(allProducts);
-localStorage.setItem('results', Product.stringifiedProduct);
-
-//check local storage for results
-Product.parseProduct = JSON.parse(localStorage.getItem('results'));
 
 //array to store instances of product constructor
 //use the products from local storage, or make new product instances
