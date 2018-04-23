@@ -6,7 +6,7 @@ body {
    h1 {
      font-family: 'Black Han Sans', sans-serif;
      text-align: center;
-    font-size: 2.5em;
+     font-size: 2.5em;
    }
    
   h2 {
@@ -15,15 +15,25 @@ body {
     font-size: 1.4em;
   }
   
-  img {
+  /* img {
     padding: 15px;
     width: 12em;
     height: 12em;
-    margin-right: 5em
-  }
+    margin-right: 5em;
+  } */
+
+  img {
+    padding: 15px;
+   /* display: inline-block;  */
+    margin-left: auto;
+    margin-right: auto;
+    width: 12em;
+    height: 12em;
+}
 
   .imgButton{
     text-align:center;
+    float: right;
 }
   
   
@@ -46,16 +56,22 @@ body {
     background: rgb(65, 53, 236);
   }
   
-  #ul.vote-list {
+  ul {
     columns: 3;
     color: rgb(255, 255, 255);
-    font-family: 'Black Han Sans';
+    font-family: 'Quicksand', sans-serif;
     width: 85%;
     margin: 0 auto;
     padding-top: 1em;
     padding-bottom: 2em;
     padding-left: 1.75em;
     padding-right: 0;
+    list-style-type: none;
   }
+  
+  ul li {
+    padding: .25em;
+  }
+  
 
 
